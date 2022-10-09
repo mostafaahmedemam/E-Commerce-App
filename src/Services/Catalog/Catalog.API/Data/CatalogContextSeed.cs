@@ -67,8 +67,8 @@ namespace Catalog.API.Data
                     ImageFile = "product-5.png",
                     Price = 380.00M,
                     Category = "Smart Phone"
-                },
-                new Product()
+                },  
+                new Product() 
                 {
                     Id = "602d2149e773f2a3990b47fa",
                     Name = "LG G7 ThinQ",
