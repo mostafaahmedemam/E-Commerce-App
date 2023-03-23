@@ -1,16 +1,16 @@
-﻿using Discount.API.Entities;
+﻿using Discount.Grpc.Entities;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Threading.Tasks;
 using Npgsql;
 using Dapper;
 
-namespace Discount.API.Repositories
+namespace Discount.Grpc.Repositories
 {
     public class DiscountRepository : IDiscountRepository
     {
         private readonly IConfiguration _configuration;
-        //ToDo:Add Connection into constractor
+
         public DiscountRepository(IConfiguration configuration)
         {
             _configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
