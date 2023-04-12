@@ -12,8 +12,8 @@ services:
     image: postgres
   pgadmin:
     image: dpage/pgadmin4
-
-
+  orderdb:
+    image: mcr.microsoft.com/mssql/server:2017-latest
   discount.grpc:
     image: ${DOCKER_REGISTRY-}discountgrpc
     build:
@@ -25,8 +25,11 @@ services:
     build:
       context: .
       dockerfile: Services/Catalog/Catalog.API/Dockerfile
-
+       
+  catalogdb:
+   image: mongo
 volumes:
+  mongo_data:
   postgres_data:
   pgadmin_data:
 

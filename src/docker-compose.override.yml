@@ -2,10 +2,13 @@ version: '3.4'
 
 services:
   catalog.api:
+    container_name: catalog.api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
       - ":8000:80"
+    depends_on:
+     - catalogdb
   
   basket.api:
     container_name: basket.api
@@ -17,12 +20,27 @@ services:
       - "8001:80"
     depends_on:
       - basketdb
-
+  orderdb:
+    container_name: orderdb
+    environment:
+        SA_PASSWORD: "SwN12345678"
+        ACCEPT_EULA: "Y"
+    restart: always
+    ports:
+        - "1433:1433"
   basketdb:
     container_name: basketdb
     restart: always
     ports:
       - "6379:6379"
+  
+  catalogdb:
+    container_name: catalogdb
+    restart: always
+    ports:
+        - "28000:27017"
+    volumes:
+      - mongo_data:/data/db
 
   discountdb:
     container_name: discountdb
@@ -58,6 +76,6 @@ services:
     ports:
       - "8003:80"
 
-
+  
 
 
