@@ -19,7 +19,8 @@ services:
     build:
       context: .
       dockerfile: Services/Discount/Discount.Grpc/Dockerfile
-
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
   catalog.api:
     image: ${DOCKER_REGISTRY-}catalogapi
     build:
